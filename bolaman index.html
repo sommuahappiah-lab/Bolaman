@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Bola Man</title><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#0f7a4f"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--bg:#f5f6f1;--card:#fff;--tx:#17251d;--mut:#5f6e64;--pri:#0f7a4f;--on:#fff;--soft:#e2f1e8;--bd:#d9e1da;--gold:#f2b705;--red:#c8372d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1711;--card:#15231a;--tx:#ecf4ee;--mut:#9db1a3;--pri:#3ccf86;--on:#06130b;--soft:#1b3526;--bd:#27402f;--red:#ff7a6e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1711;--card:#15231a;--tx:#ecf4ee;--mut:#9db1a3;--pri:#3ccf86;--on:#06130b;--soft:#1b3526;--bd:#27402f;--red:#ff7a6e;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#shell{max-width:480px;margin:0 auto;padding:0 16px 110px}
+.kente{height:8px;margin:0 -16px 14px;background:repeating-linear-gradient(90deg,var(--gold) 0 24px,var(--pri) 24px 48px,var(--red) 48px 60px,var(--tx) 60px 72px)}
+.note{font-size:13px;color:var(--mut);background:var(--soft);border-radius:10px;padding:8px 12px;margin-bottom:14px}
+h1{font-size:28px;line-height:1.1;margin:4px 0 6px;letter-spacing:-.02em}
+h3{font-size:15px;margin:22px 0 8px}
+.m{color:var(--mut);margin:0}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.c{font:inherit;color:var(--tx);background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:12px;text-align:left;display:flex;flex-direction:column;gap:2px;cursor:pointer}
+.c span{font-size:13px;color:var(--mut)}
+.c.on{border-color:var(--pri);background:var(--soft)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+select,input{width:100%;font:inherit;color:var(--tx);background:var(--card);border:2px solid var(--bd);border-radius:12px;padding:12px;margin-bottom:8px}
+select:focus,input:focus,button:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.bar{display:flex;justify-content:space-between;align-items:baseline;margin:22px 0 10px;padding:14px 16px;border:2px dashed var(--bd);border-radius:14px;background:var(--card)}
+.bar strong{font-size:26px}
+.btn{width:100%;font:inherit;font-weight:700;font-size:17px;border:0;border-radius:14px;padding:15px;background:var(--pri);color:var(--on);cursor:pointer}
+.btn.g2{background:transparent;color:var(--pri);border:2px solid var(--pri);margin-top:8px}
+.card{background:var(--card);border:2px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:10px}
+.err{color:var(--red);font-size:14px;min-height:20px}
+.step{display:flex;gap:12px;align-items:flex-start;padding:8px 0}
+.dot{width:26px;height:26px;border-radius:50%;border:2px solid var(--bd);display:grid;place-items:center;font-size:14px;flex:none;color:var(--on)}
+.step.done .dot{background:var(--pri);border-color:var(--pri)}
+.step.now .dot{border-color:var(--gold);background:var(--gold)}
+.step.todo{color:var(--mut)}
+.pill{font-size:13px;font-weight:600;padding:3px 10px;border-radius:20px;background:var(--soft);color:var(--pri)}
+.pill.w{background:var(--gold);color:#222}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:2px solid var(--bd);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;gap:6px}
+nav button{flex:1;max-width:150px;font:inherit;font-size:13px;font-weight:600;background:none;border:0;color:var(--mut);padding:8px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+nav button i{font-style:normal;font-size:22px}
+nav button.on{color:var(--pri);background:var(--soft)}
+svg{width:100%;height:auto;border-radius:12px;background:var(--soft)}
+.seg{display:flex;background:var(--soft);border-radius:12px;padding:4px;margin-bottom:14px}.seg button{flex:1;font:inherit;font-weight:600;border:0;background:none;color:var(--mut);padding:8px;border-radius:9px;cursor:pointer}.seg button.on{background:var(--pri);color:var(--on)}.stars button{font-size:30px;background:none;border:0;cursor:pointer;padding:2px;color:var(--gold)}.btn.d{background:var(--red);color:#fff}.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}.days .c{flex:none;min-width:96px;align-items:center;text-align:center}.brand{font-weight:800;font-size:22px;letter-spacing:-.01em;margin:0 0 10px}
+</style>
+</head>
+<body>
+<div id="shell"><div class="kente"></div><div class="brand">🗑️ The Bola Man</div><div class="note">Test version. Mobile Money is not connected yet, so no money is charged.</div><div class="seg" id="seg"></div><div id="app"></div></div>
+<nav id="nav"></nav>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script>
+firebase.initializeApp({apiKey:"AIzaSyDFWOYS8E-Unsb8Nfk5Fh6WoF432FHezJE",authDomain:"the-bola-man.firebaseapp.com",projectId:"the-bola-man",storageBucket:"the-bola-man.firebasestorage.app",messagingSenderId:"1006983998531",appId:"1:1006983998531:web:970271e511f60b3bc678f6"});
+const db=firebase.firestore();let DID,SEEN;try{DID=localStorage.getItem("did");SEEN=localStorage.getItem("seen")}catch(e){}
+if(!DID){DID="d"+Math.random().toString(36).slice(2,10);try{localStorage.setItem("did",DID)}catch(e){}}
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>"&#"+c.charCodeAt(0)+";");
+const AREAS=["Osu","East Legon","Madina","Adenta","Dansoman","Tema Community 1","Kasoa","Kumasi, Ahodwo"];
+const SIZES=[["Small","1 to 2 bags",10],["Medium","A bin or 5 bags",25],["Large","Big bin or drum",50],["Truckload","Tricycle or skip load",250]];
+const TYPES=[["Household","🏠",1],["Recyclables","♻️",.8],["Bulky items","🛋️",1.5],["Business","🏪",1.3]];
+const TIMES=[["As soon as possible",5],["Morning, 7am to 10am",0],["Midday, 10am to 1pm",0],["Afternoon, 2pm to 5pm",0]];const REPS=[["Just once",0],["Every week",10],["Every 2 weeks",5],["Every month",0]];const DAYS=[...Array(7)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()+i);return d});const dl=i=>i==0?"Today":i==1?"Tomorrow":DAYS[i].toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"});const when=()=>(S.time==0?"Today, as soon as possible":dl(S.day)+", "+TIMES[S.time][0])+(S.rep?", repeats "+REPS[S.rep][0].toLowerCase():"");
+const PAY=["MTN MoMo","Telecel Cash","AT Money","Cash on pickup"];
+const STEPS=["Request confirmed","Collector assigned","Collector on the way","Waste collected"];
+let S={tab:"req",step:1,type:0,size:1,area:0,addr:"",time:1,day:1,rep:0,pay:0,phone:"",err:"",cur:null,prog:0,rated:0,cs:0,cn:"",cp:"",cv:0,role:"cust",jobs:[],orders:[],done:[],pend:[],curId:null};
+const price=()=>Math.round(SIZES[S.size][2]*TYPES[S.type][2]*(1-REPS[S.rep][1]/100)+TIMES[S.time][1]);
+const set=(k,v)=>{S[k]=v;if(k=="time"&&v==0)S.day=0;if(k=="day"&&S.time==0)S.time=1;R()};
+const go=t=>{S.tab=t;R()};
+const chips=(arr,key,fn)=>arr.map((a,i)=>`<button class="c ${S[key]==i?"on":""}" onclick="set('${key}',${i})">${fn(a)}</button>`).join("");
+function v1(){return `<h1>Request a pickup</h1><p class="m">Book a collector near you and pay with Mobile Money.</p>
+<h3>What are we collecting?</h3><div class="g">${chips(TYPES,"type",t=>`<span style="font-size:22px">${t[1]}</span><b>${t[0]}</b>`)}</div>
+<h3>How much waste?</h3><div class="g">${chips(SIZES,"size",s=>`<b>${s[0]}</b><span>${s[1]}</span>`)}</div>
+<h3>Where should we collect?</h3>
+<select onchange="S.area=+this.value">${AREAS.map((a,i)=>`<option value="${i}" ${S.area==i?"selected":""}>${a}</option>`).join("")}</select>
+<input placeholder="House number or landmark" value="${S.addr}" oninput="S.addr=this.value">
+<h3>Pick a day</h3><div class="days">${DAYS.map((d,i)=>`<button class="c ${S.day==i?"on":""}" onclick="set('day',${i})"><b>${dl(i)}</b></button>`).join("")}</div><h3>Pick a time</h3><div class="g">${chips(TIMES,"time",t=>`<b>${t[0]}</b><span>${t[1]?"Rush fee GH₵ "+t[1]:"No extra fee"}</span>`)}</div><h3>Repeat this pickup?</h3><div class="g">${chips(REPS,"rep",r=>`<b>${r[0]}</b><span>${r[1]?"Save "+r[1]+"%":"Full price"}</span>`)}</div>
+<div class="bar"><span>Estimated price${S.rep?" per pickup":""}</span><strong>GH₵ ${price()}</strong></div>
+<button class="btn" onclick="S.step=2;R()">Continue to payment</button>`}
+function v2(){return `<h1>Pay for pickup</h1>
+<div class="card"><div class="row"><b>${TYPES[S.type][0]}, ${SIZES[S.size][0]}</b><b>GH₵ ${price()}</b></div>
+<p class="m">${S.addr||"Address not added"}, ${AREAS[S.area]}<br>${when()}</p></div>
+<h3>Pay with</h3><div class="g">${chips(PAY,"pay",p=>`<b>${p}</b>`)}</div>
+${S.pay<3?`<h3>Mobile Money number</h3><input type="tel" inputmode="numeric" maxlength="10" placeholder="024 000 0000" value="${S.phone}" oninput="S.phone=this.value">`:`<p class="m">Pay the collector in cash when your waste is collected.</p>`}
+<div class="err" id="err">${S.err}</div>
+<button class="btn" onclick="pay()">${S.pay<3?"Pay":"Book, pay cash"} GH₵ ${price()}</button><button class="btn g2" onclick="set('step',1)">Edit request</button>`}
+function pay(){
+if(S.pay<3&&!/^0\d{9}$/.test(S.phone.replace(/\s/g,""))){S.err="Enter a 10-digit Ghana number starting with 0.";document.getElementById("err").textContent=S.err;return}
+S.err="";db.collection("jobs").add({cid:DID,ts:Date.now(),d:dl(S.day)+(S.rep?", "+REPS[S.rep][0].toLowerCase():""),t:TYPES[S.type][0]+", "+SIZES[S.size][0],p:price(),a:AREAS[S.area]+(S.addr?", "+S.addr:""),w:when(),st:0,cash:S.pay==3,x:0,by:""}).then(r=>{S.curId=r.id;S.rated=0;S.tab="track";S.step=1;R()}).catch(()=>{document.getElementById("err").textContent="Could not send. Check your internet and try again."})}
+function adv(){if(!S.cur||S.prog>2)return;S.prog++;if(S.prog==3)S.cur.s="Collected";R()}
+function cancel(){db.collection("jobs").doc(S.cur.id).update({x:1})}
+function sub(){if(!S.cn.trim()||!/^0\d{9}$/.test(S.cp.replace(/\s/g,""))){document.getElementById("ce").textContent="Enter your name and a 10-digit number starting with 0.";return}db.collection("collectors").doc(DID).set({name:S.cn.trim(),phone:S.cp.replace(/\s/g,""),vehicle:S.cv,status:"pending",ts:Date.now()})}
+function vs(){
+if(S.cs==2)return `<h1>You are approved</h1><p class="m">You can now receive pickup jobs on this phone.</p><div class="card" style="margin-top:14px"><b>Invite another collector</b><div class="m">Share this link: ${location.href.split("#")[0]}</div></div><button class="btn g2" onclick="try{localStorage.setItem('seen',1)}catch(e){}set('cs',3)">Continue to jobs</button>`;
+if(S.cs==1)return `<h1>Application sent</h1><p class="m">We will check your details and message you within 24 hours.</p><br><div class="card"><b>${S.cn}</b><div class="m">${S.cp}, ${["Tricycle","Motorbike","Pickup truck","Truck"][S.cv]}</div></div><p class="m">You will get a call or message on this number once you are approved. This page updates by itself.</p>`;
+return `<h1>Become a collector</h1><p class="m">Collect waste near you and keep 85% of each pickup.</p><h3>Your name</h3><input placeholder="Full name" value="${S.cn}" oninput="S.cn=this.value"><h3>Phone number</h3><input type="tel" inputmode="numeric" maxlength="10" placeholder="024 000 0000" value="${S.cp}" oninput="S.cp=this.value"><h3>Your vehicle</h3><div class="g">${chips(["Tricycle","Motorbike","Pickup truck","Truck"],"cv",v=>`<b>${v}</b>`)}</div><div class="err" id="ce" style="margin-top:10px"></div><button class="btn" onclick="sub()">Send application</button>`}
+function adv2(id){const j=S.jobs.find(x=>x.id==id);if(!j||j.st>2)return;const f=db.collection("jobs").doc(id),u={st:j.st+1};if(j.st==0){u.by=DID;u.bn=S.cn||"Collector";u.bv=["Tricycle","Motorbike","Pickup truck","Truck"][S.cv]}db.runTransaction(async t=>{const r=await t.get(f);if(r.data().st!=j.st||r.data().x)throw 0;t.update(f,u)}).catch(()=>{})}
+function vj2(){const L=["Accept job","Start trip","Mark as collected"],a=S.jobs.filter(j=>j.st==0||j.by==DID),n=a.filter(j=>j.st==0).length;
+return `<h1>Jobs near you</h1><p class="m">You are online. ${n} new request${n==1?"":"s"} nearby.</p><br>${a.length?a.map(j=>`<div class="card"><div class="row"><b>${esc(j.t)}</b><span class="pill ${j.st?"":"w"}">GH₵ ${j.p}</span></div><p class="m">${esc(j.a)}<br>${esc(j.w)}${j.cash?", cash on pickup":", paid by Mobile Money"}</p><p style="margin:0 0 10px"><b>${["New request","Accepted","On the way"][j.st]}</b></p><button class="btn" onclick="adv2('${j.id}')">${L[j.st]}</button></div>`).join(""):`<div class="card"><b>No open requests</b><div class="m">New pickups show up here as customers book them.</div></div>`}`}
+function ve2(){const d=S.done,t=d.reduce((a,o)=>a+o.p,0);
+return `<h1>Earnings</h1><p class="m">You keep 85% of each pickup. The Bola Man keeps 15%.</p><div class="bar"><span>${d.length} pickups, total earned</span><strong>GH₵ ${(t*.85).toFixed(2)}</strong></div>${d.map(o=>`<div class="card row"><div><b>${esc(o.t)}</b><div class="m">${o.id.slice(0,6).toUpperCase()}, ${esc(o.d)}</div></div><b>GH₵ ${(o.p*.85).toFixed(2)}</b></div>`).join("")}`}
+function va(){return `<h1>Admin: approve collectors</h1><p class="m">${S.pend.length} waiting</p><br>${S.pend.map(c=>`<div class="card"><b>${esc(c.name)}</b><div class="m">${esc(c.phone)}, ${["Tricycle","Motorbike","Pickup truck","Truck"][c.vehicle]}</div><br><button class="btn" onclick="appr('${c.id}')">Approve</button></div>`).join("")||`<div class="card">No pending applications.</div>`}`}
+function appr(id){db.collection("collectors").doc(id).update({status:"approved"})}
+function setRole(r){S.role=r;S.tab=r=="cust"?(S.cur?"track":"req"):"jobs";R()}
+function vj(){const o=S.cur&&S.prog<3?S.cur:null,L=["Accept job","Start trip","Mark as collected"];
+return `<h1>Jobs near you</h1><p class="m">You are online in ${AREAS[S.area]}.</p><br>${o?`<div class="card"><div class="row"><b>${o.t}</b><span class="pill w">GH₵ ${o.p}</span></div><p class="m">${S.addr||"No landmark given"}, ${AREAS[S.area]}<br>${when()}, ${S.pay==3?"cash on pickup":"paid by Mobile Money"}</p><button class="btn" onclick="adv()">${L[S.prog]}</button></div>`:`<div class="card"><b>No new requests</b><div class="m">Book a pickup in the Customer view and it shows up here.</div></div>`}<h3>Other requests (samples)</h3>${[["Household, Small","Madina",10],["Business, Large","Osu",65]].map(j=>`<div class="card row" style="opacity:.6"><div><b>${j[0]}</b><div class="m">${j[1]}</div></div><b>GH₵ ${j[2]}</b></div>`).join("")}`}
+function ve(){const d=S.orders.filter(o=>o.s=="Collected"),t=d.reduce((a,o)=>a+o.p,0);
+return `<h1>Earnings</h1><p class="m">You keep 85% of each pickup. The Bola Man keeps 15%.</p><div class="bar"><span>Total earned</span><strong>GH₵ ${(t*.85).toFixed(2)}</strong></div>${d.map(o=>`<div class="card row"><div><b>${o.t}</b><div class="m">${o.id}, ${o.d}</div></div><b>GH₵ ${(o.p*.85).toFixed(2)}</b></div>`).join("")}`}
+function vt(){const o=S.cur;if(!o)return `<h1>No active pickup</h1><p class="m">When you book a pickup, you can follow your collector here.</p><br><button class="btn" onclick="go('req')">Request a pickup</button>`;
+const done=S.prog==3;
+return `<h1>${["Finding a collector","Collector assigned","Collector on the way","Waste collected"][S.prog]}</h1><p class="m">Order ${o.id.slice(0,6).toUpperCase()}, GH₵ ${o.p}${o.cash?", cash on pickup":", paid"}<br>${esc(o.w)}</p><br>
+<svg viewBox="0 0 300 120" role="img" aria-label="Route from collector to your location"><path d="M30 95 C90 95 90 40 150 55 S 240 30 265 30" fill="none" stroke="var(--pri)" stroke-width="4" stroke-dasharray="6 6"/><circle cx="30" cy="95" r="9" fill="var(--gold)"/><text x="30" y="118" font-size="11" text-anchor="middle" fill="var(--tx)">Collector</text><circle cx="265" cy="30" r="9" fill="var(--red)"/><text x="265" y="15" font-size="11" text-anchor="middle" fill="var(--tx)">You</text></svg>
+<div class="card" style="margin-top:12px">${STEPS.map((s,i)=>`<div class="step ${i<=S.prog?"done":i==S.prog+1?"now":"todo"}"><div class="dot">${i<=S.prog?"✓":""}</div><div><b>${s}</b></div></div>`).join("")}</div>
+${S.prog>0?`<div class="card row"><div><b>${esc(o.bn||"Your collector")}</b><div class="m">${esc(o.bv||"Collector")}</div></div><span class="pill ${done?"":"w"}">${done?"Done":S.prog==1?"Assigned":"On the way"}</span></div>`:`<div class="card"><b>Waiting for a collector to accept</b><div class="m">This usually takes a few minutes.</div></div>`}
+${done?`<h3>Rate your collector</h3><div class="stars">${[1,2,3,4,5].map(n=>`<button aria-label="${n} stars" onclick="set('rated',${n})">${n<=S.rated?"★":"☆"}</button>`).join("")}</div><p class="m">${S.rated?"Thanks for rating. ":""}Your receipt is saved under History.</p>`:`${S.prog==0?`<button class="btn d" onclick="cancel()">Cancel request</button>`:""}`}`}
+function vh(){return `<h1>History</h1><p class="m">${S.orders.length} pickups so far</p><br>${S.orders.map(o=>`<div class="card row"><div><b>${o.t}</b><div class="m">${o.id}, ${o.d}</div></div><div style="text-align:right"><b>GH₵ ${o.p}</b><br><span class="pill ${o.s=="Collected"?"":"w"}">${o.s}</span></div></div>`).join("")}`}
+function R(){const c=S.role=="cust";document.getElementById("seg").innerHTML=[["cust","Customer"],["coll","Collector"]].map(r=>`<button class="${S.role==r[0]?"on":""}" onclick="setRole('${r[0]}')">${r[1]}</button>`).join("");document.getElementById("app").innerHTML=S.role=="admin"?va():!c?(S.cs<3?vs():S.tab=="earn"?ve2():vj2()):S.tab=="req"?(S.step==1?v1():v2()):S.tab=="track"?vt():vh();
+document.getElementById("nav").innerHTML=(c?[["req","🗑️","Request"],["track","📍","Track"],["hist","🧾","History"]]:[["jobs","📋","Jobs"],["earn","💰","Earnings"]]).map(n=>`<button class="${S.tab==n[0]?"on":""}" onclick="go('${n[0]}')"><i>${n[1]}</i>${n[2]}</button>`).join("");if(!R.k)window.scrollTo(0,0)}
+const Rs=()=>{if(/INPUT|SELECT/.test(document.activeElement.tagName))return;R.k=1;R();R.k=0};
+if(location.hash=="#admin"&&prompt("Admin PIN")=="2468"){S.role="admin";db.collection("collectors").where("status","==","pending").onSnapshot(sn=>{S.pend=sn.docs.map(d=>({...d.data(),id:d.id}));Rs()})}
+db.collection("jobs").orderBy("ts","desc").limit(200).onSnapshot(sn=>{const all=sn.docs.map(d=>({...d.data(),id:d.id})),mine=all.filter(j=>j.cid==DID);
+S.jobs=all.filter(j=>j.st<3&&!j.x);
+S.cur=mine.find(j=>j.id==S.curId&&!j.x)||mine.find(j=>j.st<3&&!j.x)||null;if(S.cur)S.prog=S.cur.st;
+S.orders=mine.map(j=>({id:j.id.slice(0,6).toUpperCase(),d:j.d,t:j.t,p:j.p,s:j.x?"Cancelled":j.st==3?"Collected":"In progress"}));
+S.done=all.filter(j=>j.by==DID&&j.st==3);Rs()},e=>{document.getElementById("app").innerHTML="<p class='m'>Cannot connect. Check your internet and reload.</p>"});
+db.collection("collectors").doc(DID).onSnapshot(d=>{if(d.exists){const c=d.data();S.cn=c.name;S.cp=c.phone;S.cv=c.vehicle;if(S.cs<3)S.cs=c.status=="approved"?(SEEN?3:2):1}Rs()});
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
+R();
+</script>
+</body>
+</html>
